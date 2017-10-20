@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Martine" />
+  <title>From Markdown to nice looking article</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">From Markdown to nice looking article</h1>
+<h2 class="author">Martine</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#instructions"><span class="toc-section-number">1</span> Instructions</a><ul>
+<li><a href="#header"><span class="toc-section-number">1.1</span> Header</a></li>
+<li><a href="#citations"><span class="toc-section-number">1.2</span> Citations</a></li>
+<li><a href="#equations"><span class="toc-section-number">1.3</span> Equations</a></li>
+<li><a href="#compiling"><span class="toc-section-number">1.4</span> Compiling</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="instructions"><span class="header-section-number">1</span> Instructions</h1>
+<h2 id="header"><span class="header-section-number">1.1</span> Header</h2>
+<p>Start your <code>Markdown</code> file with a <code>Yaml</code> header such as the one at the top of this file:</p>
+<pre><code>---
+title: &lt;YOUR_AMAZING_TITLE&gt;
+author: &lt;YOUR_NAME&gt;
+bibliography: &lt;BIBTEX_FILE&gt;
+csl: &lt;CSL_BIB_STYLE_FILE&gt;
+---</code></pre>
+<h2 id="citations"><span class="header-section-number">1.2</span> Citations</h2>
+<p>You can site Einstein if it please you<span class="citation"><sup>1</sup></span>:</p>
+<pre><code>[@&lt;BIBTEX_ENTRY_NAME&gt;]</code></pre>
+<h2 id="equations"><span class="header-section-number">1.3</span> Equations</h2>
+<p>Using Mathjax, why not add some fun equation:</p>
+<p><span class="math display">\[
+\gamma = \frac{1}{\sqrt{1-v^2/c^2}}
+\]</span></p>
+<p>More generally:</p>
+<pre><code>$$
+&lt;YOUR_AMAZING_LATEX_EQUATION&gt;
+$$</code></pre>
+<h2 id="compiling"><span class="header-section-number">1.4</span> Compiling</h2>
+<p>First install <a href="https://pandoc.org">pandoc and pandoc-citeproc</a>. On MacOS using Homebrew (follow link for documentation on other platforms):</p>
+<pre><code>brew install pandoc pandoc-citeproc</code></pre>
+<p>Once installed, you can run the following commands for either a nice HTML document or, if you have LaTeX and PDFLaTeX installed, an equally nice PDF document:</p>
+<pre><code>pandoc -N --toc --css=pandoc.css --mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML --filter pandoc-citeproc -o README.html README.md</code></pre>
+<p>or</p>
+<pre><code>pandoc -N --toc --template template.latex --filter pandoc-citeproc -o README.pdf README.md</code></pre>
+<p>You can also make yourself a nice little Makefile that will prevent retyping these every time.</p>
+<div id="refs" class="references">
+<div id="ref-ANDP:ANDP19163540702">
+<p>1. Einstein, A. Die grundlage der allgemeinen relativitätstheorie. <em>Annalen der Physik</em> <strong>354,</strong> 769–822 (1916).</p>
+</div>
+</div>
+</body>
+</html>
